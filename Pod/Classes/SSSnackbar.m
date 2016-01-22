@@ -114,7 +114,7 @@ static SSSnackbar *currentlyVisibleSnackbar = nil;
 - (void)showTopBottom:(BOOL)showTop {
     
     if(showTop){
-        self.visibleVerticalLayoutConstraintsPositionVisible = @"V:|-(5)-[self(44)]";
+        self.visibleVerticalLayoutConstraintsPositionVisible = @"V:|-(20)-[self(44)]";
         self.visibleVerticalLayoutConstraintsPositionHidden = @"V:|-(-50)-[self(44)]";
     } else {
         self.visibleVerticalLayoutConstraintsPositionVisible = @"V:[self(44)]-(5)-|";
