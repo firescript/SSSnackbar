@@ -42,7 +42,6 @@ static SSSnackbar *currentlyVisibleSnackbar = nil;
                                                       duration:duration
                                                    actionBlock:actionBlock
                                                 dismissalBlock:dismissalBlock];
-    
     return snackbar;
 }
 
@@ -91,12 +90,8 @@ static SSSnackbar *currentlyVisibleSnackbar = nil;
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
     }
-    return self;
-}
-
-- (void)viewDidLoad
-{
     self.showTop = NO;
+    return self;
 }
 
 - (void)drawRect:(CGRect)rect {
@@ -110,7 +105,15 @@ static SSSnackbar *currentlyVisibleSnackbar = nil;
     CGContextRestoreGState(ctx);
 }
 
-- (void)show:(BOOL)showTop {
+- (void)show {
+    [self showTopBottom:NO];
+}
+
+- (void)showTop {
+    [self showTopBottom:YES];
+}
+
+- (void)showTopBottom:(BOOL)showTop {
     
     if(showTop){
         self.visibleVerticalLayoutConstraintsPositionVisible = @"V:|-(5)-[self(44)]";
