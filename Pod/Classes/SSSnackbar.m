@@ -21,10 +21,8 @@ static SSSnackbar *currentlyVisibleSnackbar = nil;
 @property (strong, nonatomic) NSArray *visibleVerticalLayoutConstraints;
 @property (strong, nonatomic) NSArray *horizontalLayoutConstraints;
 
-
 @property (strong, nonatomic) NSString *visibleVerticalLayoutConstraintsPositionHidden;
 @property (strong, nonatomic) NSString *visibleVerticalLayoutConstraintsPositionVisible;
-
 
 @property (assign, nonatomic) BOOL actionBlockDispatched;
 @end
@@ -107,7 +105,6 @@ static SSSnackbar *currentlyVisibleSnackbar = nil;
 
 - (void)show:(BOOL)showTop {
     
-    //shattar is if statement correct?
     if(showTop){
         self.visibleVerticalLayoutConstraintsPositionVisible = @"V:|-(5)-[self(44)]";
         self.visibleVerticalLayoutConstraintsPositionHidden = @"V:|-(-50)-[self(44)]";
