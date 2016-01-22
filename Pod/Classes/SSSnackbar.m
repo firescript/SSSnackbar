@@ -21,6 +21,11 @@ static SSSnackbar *currentlyVisibleSnackbar = nil;
 @property (strong, nonatomic) NSArray *visibleVerticalLayoutConstraints;
 @property (strong, nonatomic) NSArray *horizontalLayoutConstraints;
 
+
+@property (strong, nonatomic) NSString *visibleVerticalLayoutConstraintsPositionHidden;
+@property (strong, nonatomic) NSString *visibleVerticalLayoutConstraintsPositionVisible;
+
+
 @property (assign, nonatomic) BOOL actionBlockDispatched;
 @end
 
@@ -100,7 +105,17 @@ static SSSnackbar *currentlyVisibleSnackbar = nil;
     CGContextRestoreGState(ctx);
 }
 
-- (void)show {
+- (void)show:(BOOL)showTop {
+    
+    //shattar is if statement correct?
+    if(showTop){
+        self.visibleVerticalLayoutConstraintsPositionVisible = @"V:|-(5)-[self(44)]";
+        self.visibleVerticalLayoutConstraintsPositionHidden = @"V:|-(-50)-[self(44)]";
+    } else {
+        self.visibleVerticalLayoutConstraintsPositionVisible = @"V:[self(44)]-(5)-|";
+        self.visibleVerticalLayoutConstraintsPositionHidden = @"V:[self(44)]-(5)-|";
+    }
+    
     UIViewController *topController = [UIApplication sharedApplication].keyWindow.rootViewController;
     while (topController.presentedViewController) {
         topController = topController.presentedViewController;
@@ -240,8 +255,9 @@ static SSSnackbar *currentlyVisibleSnackbar = nil;
 - (NSArray *)hiddenVerticalLayoutConstraints {
     if (!_hiddenVerticalLayoutConstraints) {
     
+        
         _hiddenVerticalLayoutConstraints =
-        [NSLayoutConstraint constraintsWithVisualFormat:@"V:[self(44)]-(-50)-|"
+        [NSLayoutConstraint constraintsWithVisualFormat:self.visibleVerticalLayoutConstraintsPositionHidden
                                                 options:0
                                                 metrics:nil
                                                   views:NSDictionaryOfVariableBindings(self)];
@@ -253,8 +269,9 @@ static SSSnackbar *currentlyVisibleSnackbar = nil;
 - (NSArray *)visibleVerticalLayoutConstraints {
     if (!_visibleVerticalLayoutConstraints) {
         
+        
         _visibleVerticalLayoutConstraints =
-        [NSLayoutConstraint constraintsWithVisualFormat:@"V:[self(44)]-(5)-|"
+        [NSLayoutConstraint constraintsWithVisualFormat:self.visibleVerticalLayoutConstraintsPositionVisible
                                                 options:0
                                                 metrics:nil
                                                   views:NSDictionaryOfVariableBindings(self)];
