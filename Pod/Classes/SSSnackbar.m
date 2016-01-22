@@ -12,6 +12,7 @@
 static SSSnackbar *currentlyVisibleSnackbar = nil;
 
 @interface SSSnackbar ()
+
 @property (strong, nonatomic) UILabel *messageLabel;
 @property (strong, nonatomic) UIButton *actionButton;
 @property (strong, nonatomic) UIView *separator;
@@ -23,6 +24,7 @@ static SSSnackbar *currentlyVisibleSnackbar = nil;
 
 @property (strong, nonatomic) NSString *visibleVerticalLayoutConstraintsPositionHidden;
 @property (strong, nonatomic) NSString *visibleVerticalLayoutConstraintsPositionVisible;
+@property (nonatomic) BOOL showTop;
 
 @property (assign, nonatomic) BOOL actionBlockDispatched;
 @end
@@ -90,6 +92,11 @@ static SSSnackbar *currentlyVisibleSnackbar = nil;
     if (self = [super initWithFrame:frame]) {
     }
     return self;
+}
+
+- (void)viewDidLoad
+{
+    self.showTop = NO;
 }
 
 - (void)drawRect:(CGRect)rect {
