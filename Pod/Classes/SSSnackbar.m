@@ -24,7 +24,6 @@ static SSSnackbar *currentlyVisibleSnackbar = nil;
 
 @property (strong, nonatomic) NSString *visibleVerticalLayoutConstraintsPositionHidden;
 @property (strong, nonatomic) NSString *visibleVerticalLayoutConstraintsPositionVisible;
-@property (nonatomic) BOOL showTop;
 
 @property (assign, nonatomic) BOOL actionBlockDispatched;
 @end
@@ -90,7 +89,6 @@ static SSSnackbar *currentlyVisibleSnackbar = nil;
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
     }
-    self.showTop = NO;
     return self;
 }
 
